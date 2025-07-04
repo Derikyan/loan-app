@@ -1,46 +1,93 @@
-# Getting Started with Create React App
+# Loan Application Form
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern multi-step loan application form built with React, TypeScript, and Tailwind CSS.
 
-## Available Scripts
+## Features
+- 3-Step Application Process (Personal info → Address → Loan parameters)
+- Real-time input validation
+- Responsive mobile-friendly design
+- Form state persistence
+- Success confirmation modal
+- Error handling and recovery
 
-In the project directory, you can run:
+## Installation
+1. Clone the repository:
+git clone https://github.com/yourusername/loan-application.git
+cd loan-application
 
-### `npm start`
+2. Install dependencies:
+npm install
+or
+yarn install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Running the Application
+Start development server:
+npm run dev
+or
+yarn dev
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Access at: http://localhost:3000
 
-### `npm test`
+## Testing Guide
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Manual Tests
+1. Step 1 - Personal Information:
+   • Try invalid phone formats (should auto-format to 0XXX XXX XXX)
+   • Test special characters in name fields (should show error)
+   • Verify gender selection is required
 
-### `npm run build`
+2. Step 2 - Address & Employment:
+   • Test workplace dropdown loads options
+   • Submit with empty address (should prevent continuation)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Step 3 - Loan Parameters:
+   • Adjust sliders and verify real-time updates
+   • Submit valid form (should show confirmation modal)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Build & Deployment
+Create production build:
+npm run build
+or
+yarn build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Local production preview:
+npm run preview
+or
+yarn preview
 
-### `npm run eject`
+## Project Structure
+src/
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+├── api/               # API services
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+├── components/        # UI components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+├── hooks/             # useForm, useFetch, etc.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+├── pages/             # Form steps
 
-## Learn More
+├── App.tsx            # Root component
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+└── main.tsx           # App entry point
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Key Dependencies
+Frontend:
+• React 18
+• TypeScript 5
+• Tailwind CSS 3
+• React Hook Form 7
+• React Router 6
+
+Development:
+• Vite 4
+• ESLint
+• Prettier
+• Jest (Testing)
+
+## Support
+For issues, please:
+1. Check browser console for errors
+2. Verify network requests in DevTools
+3. Clear application cache
+4. Open GitHub issue with reproduction steps
+   
