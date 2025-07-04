@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Outlet />}>
             <Route index element={<Step1 />} />
+            <Route path="loan-app" element={<Step1 />} />
             <Route path="step2" element={<Step2 />} />
             <Route path="step3" element={<Step3 />} />
           </Route>
