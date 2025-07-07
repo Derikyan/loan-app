@@ -44,6 +44,11 @@ const Step1 = () => {
               value: /^0\d{3} \d{3} \d{3}$/,
               message: "Формат: 0XXX XXX XXX",
             },
+            validate: {
+              noFourZeros: (value) =>
+                !value.replace(/\s/g, "").startsWith("0000") ||
+                "Введите правильный телефонный номер",
+            },
           })}
           className={`input w-full ${errors.phone ? "border-red-500" : ""}`}
           placeholder="0XXX XXX XXX"
@@ -60,8 +65,23 @@ const Step1 = () => {
         <input
           {...register("firstName", {
             required: "Имя обязательно",
+            validate: {
+              minTwoLetters: (v) =>
+                v.length >= 2 || "Должно быть минимум 2 символа",
+              noSpecialChars: (v) =>
+                !/[0-9\-'’\s]/.test(v) ||
+                "Запрещены цифры и специальные символы",
+            },
+            minLength: {
+              value: 2,
+              message: "Имя должно содержать минимум 2 буквы",
+            },
+            maxLength: {
+              value: 30,
+              message: "Имя не должно превышать 30 символов",
+            },
             pattern: {
-              value: /^[A-Za-zА-Яа-яЁё\s-]+$/,
+              value: /^[A-Za-zА-Яа-яЁё]+$/,
               message: "Имя должно содержать только буквы",
             },
             onChange: () => trigger("firstName"),
@@ -81,9 +101,24 @@ const Step1 = () => {
         <input
           {...register("lastName", {
             required: "Фамилия обязательна",
+            minLength: {
+              value: 2,
+              message: "Фамилия должна содержать минимум 2 буквы",
+            },
+            maxLength: {
+              value: 50,
+              message: "Фамилия не должна превышать 50 символов",
+            },
             pattern: {
-              value: /^[A-Za-zА-Яа-яЁё\s-]+$/,
+              value: /^[A-Za-zА-Яа-яЁё]+$/,
               message: "Фамилия должна содержать только буквы",
+            },
+            validate: {
+              minTwoLetters: (v) =>
+                v.length >= 2 || "Должно быть минимум 2 символа",
+              noSpecialChars: (v) =>
+                !/[0-9\-'’\s]/.test(v) ||
+                "Запрещены цифры и специальные символы",
             },
             onChange: () => trigger("lastName"),
           })}

@@ -55,6 +55,24 @@ const Step2 = () => {
         <input
           {...register("address", {
             required: "Адрес обязателен",
+            minLength: {
+              value: 5,
+              message: "Адрес слишком короткий (минимум 5 символов)",
+            },
+            maxLength: {
+              value: 100,
+              message: "Адрес слишком длинный (максимум 100 символов)",
+            },
+            pattern: {
+              value: /^[\p{L}0-9\s\-\/.,#]+$/iu,
+              message: "Недопустимые символы в адресе",
+            },
+            validate: {
+              noSpecialSeq: (v) =>
+                !/[!@#$%^&*()_+=|<>?{}\\[\\]~]/.test(v) ||
+                "Недопустимые спецсимволы",
+            },
+
             onChange: () => trigger("address"),
           })}
           className={`input w-full ${errors.address ? "border-red-500" : ""}`}
